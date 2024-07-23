@@ -1,3 +1,4 @@
+#Первый вариат
 Count_completed_HW = 12
 Count_hours_spend = 1.5
 Course_name = 'Python'
