@@ -21,5 +21,5 @@ print(Second_String + ', ' + First_String)
 a = 6
 b = 9
 c = 3
-f = (a+b)+(a+c)
+f = (a*b)+(a*c)
 print(f**3/2)
