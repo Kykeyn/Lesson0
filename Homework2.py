@@ -19,5 +19,5 @@ Count_completed_HW = 12
 Count_hours_spend = 1.5
 Course_name = 'Python'
 Time_per_task = (Count_hours_spend / Count_completed_HW)
-print(f"Курс:{Course_name}, всего задач:{Count_completed_HW}, затрачено часов:{Count_hours_spend},"
-      f" среднее время выполнения:{Time_per_task}")
+print(f"Курс:{Course_name}\nВсего задач:{Count_completed_HW}\nЗатрачено часов:{Count_hours_spend}\n"
+      f"Среднее время выполнения:{Time_per_task}")
