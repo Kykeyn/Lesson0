@@ -7,7 +7,7 @@ class House:
     def __str__(self):
         return f"Название: {self.name}, кол-во этажей: {self.number_of_floors}"
     def go_to(self, floor):
-        if floor < 0:
+        if floor <= 0:
             print('"Такого этажа не существует"')
         for i in range(1, floor + 1):
             if floor <= self.number_of_floors and floor > 0:
