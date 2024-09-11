@@ -1,25 +1,53 @@
 class House:
+    houses_history = []
+
+    def __new__(cls, *args, **kwargs):
+        cls.houses_history.append(args)
+        return object.__new__(cls)
+
     def __init__(self, name, number_of_floors):
         self.name = name
         self.number_of_floors = number_of_floors
+        self.houses_history = []
+
+    def __del__(self):
+        return print(f'{self.name} снесён, но он останется в истории')
 
     def __eq__(self, other):
-        return self.number_of_floors == other
+        if isinstance(other, int):
+            return self.number_of_floors == other
+        elif isinstance(other, House):
+            return self.number_of_floors == other
 
     def __lt__(self, other):
-        return self.number_of_floors < other
+        if isinstance(other, int):
+            return self.number_of_floors < other
+        elif isinstance(other, House):
+            return self.number_of_floors < other
 
     def __gt__(self, other):
-        return self.number_of_floors > other
+        if isinstance(other, int):
+            return self.number_of_floors > other
+        elif isinstance(other, House):
+            return self.number_of_floors > other
 
     def __le__(self, other):
-        return self.number_of_floors <= other
+        if isinstance(other, int):
+            return self.number_of_floors <= other
+        elif isinstance(other, House):
+            return self.number_of_floors <= other
 
     def __ge__(self, other):
-        return self.number_of_floors >= other
+        if isinstance(other, int):
+            return self.number_of_floors >= other
+        elif isinstance(other, House):
+            return self.number_of_floors >= other
 
     def __ne__(self, other):
-        return self.number_of_floors != other
+        if isinstance(other, int):
+            return self.number_of_floors != other
+        elif isinstance(other, House):
+            return self.number_of_floors != other
 
     def __len__(self):
         return self.number_of_floors
@@ -28,16 +56,34 @@ class House:
         return f"Название: {self.name}, кол-во этажей: {self.number_of_floors}"
 
     def __add__(self, other):
-        self.number_of_floors = self.number_of_floors + other
-        return self
+        if isinstance(other, House):
+            self.number_of_floors = self.number_of_floors + other
+            return self
+        elif isinstance(other, int):
+            self.number_of_floors = self.number_of_floors + other
+            return self
+        else:
+            return 'Ошибка'
 
     def __radd__(self, other):
-        self.number_of_floors = self.number_of_floors + other
-        return self
+        if isinstance(other, int):
+            self.number_of_floors = self.number_of_floors + other
+            return self
+        elif isinstance(other, House):
+            self.number_of_floors = self.number_of_floors + other
+            return self
+        else:
+            return "Ошибка"
 
     def __iadd__(self, other):
-        self.number_of_floors += other
-        return self
+        if isinstance(other, House):
+            self.number_of_floors += other
+            return self
+        elif isinstance(other, int):
+            self.number_of_floors += other
+            return self
+        else:
+            return "Ошибка"
 
     def go_to(self, floor):
         if floor <= 0:
@@ -70,6 +116,9 @@ print(h2)
 
 print(h1 > h2)  # __gt__
 print(h1 >= h2)  # __ge__
+print(h1 < h2)  # __lt__
+print(h1 <= h2)  # __le__
+print(h1 != h2)  # __ne__
 print(h1 < h2)  # __lt__
 print(h1 <= h2)  # __le__
 print(h1 != h2)  # __ne__
